@@ -1,0 +1,18 @@
+---
+file: bots.conf
+template: |
+  geo $searchbot {
+      default 0;
+      {{- range .Prefixes }}
+      {{- if .Ipv4Prefix }}
+      {{ .Ipv4Prefix }} 1;
+      {{- end }}
+      {{- if .Ipv6Prefix }}
+      {{ .Ipv6Prefix }} 1;
+      {{- end }}
+      {{- end }}
+  }
+google:
+  url: https://developers.google.com/static/search/apis/ipranges/googlebot.json
+bing:
+  url: https://www.bing.com/toolbox/bingbot.json
